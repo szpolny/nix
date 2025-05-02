@@ -9,6 +9,7 @@ in
     
   home.packages = [
     pkgs.git
+    pkgs.lazygit
   ];
 
   programs.home-manager.enable = true;
@@ -20,6 +21,8 @@ in
           IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
     '';
   };
+
+  programs.lazygit.enable = true;
 
   programs.git = {
     enable = true;
