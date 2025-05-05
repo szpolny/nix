@@ -45,6 +45,8 @@
 	    "firefox"
 	    "keka"
 	    "discord"
+	    "steam"
+	    "visual-studio-code"
 	  ];
 	  brews = [
 	    "gh"
