@@ -1,4 +1,9 @@
-{ config, pkgs, username, ... }:
+{
+  config,
+  pkgs,
+  username,
+  ...
+}:
 let
   homeDirectory = "/Users/${username}";
 in
@@ -6,7 +11,7 @@ in
   home.username = username;
   home.homeDirectory = homeDirectory;
   home.stateVersion = "24.11";
-    
+
   home.packages = [
     pkgs.git
     pkgs.lazygit
@@ -17,7 +22,7 @@ in
   ];
 
   programs.home-manager.enable = true;
-  
+
   programs.ssh = {
     enable = true;
     extraConfig = ''
@@ -58,9 +63,9 @@ in
       plugins = [
         { name = "zsh-users/zsh-syntax-highlighting"; }
         { name = "zsh-users/zsh-completions"; }
-	{ name = "zsh-users/zsh-autosuggestions"; }
-	{ name = "zsh-users/zsh-history-substring-search"; }
-	{ name = "Aloxaf/fzf-tab"; }
+        { name = "zsh-users/zsh-autosuggestions"; }
+        { name = "zsh-users/zsh-history-substring-search"; }
+        { name = "Aloxaf/fzf-tab"; }
       ];
     };
 
@@ -95,7 +100,7 @@ in
         format = "ssh";
       };
       "gpg \"ssh\"" = {
-	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+        program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
       };
       commit.gpgsign = true;
       user.signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIELZsezGmVU4yBlMxwrN1OCmsbarL1tdJ+72sy/y4kTz";
