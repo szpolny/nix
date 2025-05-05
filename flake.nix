@@ -37,6 +37,19 @@
           mac-app-util.darwinModules.default
           nix-homebrew.darwinModules.nix-homebrew
           home-manager.darwinModules.home-manager
+          (
+            {
+              pkgs,
+              config,
+              inputs,
+              ...
+            }:
+            {
+              home-manager.sharedModules = [
+                mac-app-util.homeManagerModules.default
+              ];
+            }
+          )
           ./hosts/darwin
           ./hosts/darwin/aether
         ];

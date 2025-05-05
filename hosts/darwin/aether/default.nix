@@ -13,8 +13,8 @@
   environment.systemPackages = with pkgs; [
     neovim
     tmux
-    kitty
     nixfmt-rfc-style
+    neofetch
   ];
 
   nix-homebrew = {

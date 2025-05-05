@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   user,
+  mac-app-util,
   ...
 }:
 let
@@ -19,7 +20,11 @@ in
     pkgs.starship
     pkgs.fzf
     pkgs.zoxide
+    pkgs.kitty
+    pkgs.nerd-fonts.geist-mono
   ];
+
+  fonts.fontconfig.enable = true;
 
   imports = [
     ../../../modules/shells/zsh.nix
@@ -27,6 +32,13 @@ in
   ];
 
   programs.home-manager.enable = true;
+
+  programs.kitty = {
+    enable = true;
+    font.name = "GeistMono Nerd Font Mono";
+    font.package = pkgs.nerd-fonts.geist-mono;
+    font.size = 12;
+  };
 
   programs.ssh = {
     enable = true;
