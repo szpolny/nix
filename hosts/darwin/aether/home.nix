@@ -27,9 +27,7 @@ in
   fonts.fontconfig.enable = true;
 
   imports = [
-    ../../../modules/shells/zsh.nix
-    ../../../modules/git.nix
-    ../../../modules/kitty.nix
+    ./modules.nix
   ];
 
   programs.home-manager.enable = true;
