@@ -29,16 +29,10 @@ in
   imports = [
     ../../../modules/shells/zsh.nix
     ../../../modules/git.nix
+    ../../../modules/kitty.nix
   ];
 
   programs.home-manager.enable = true;
-
-  programs.kitty = {
-    enable = true;
-    font.name = "GeistMono Nerd Font Mono";
-    font.package = pkgs.nerd-fonts.geist-mono;
-    font.size = 12;
-  };
 
   programs.ssh = {
     enable = true;
