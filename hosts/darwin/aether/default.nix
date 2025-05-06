@@ -15,6 +15,8 @@
     tmux
     nixfmt-rfc-style
     neofetch
+    rustc
+    rustup
   ];
 
   nix-homebrew = {
@@ -47,6 +49,7 @@
     ];
     brews = [
       "gh"
+      "weechat"
     ];
     onActivation.cleanup = "zap";
   };
