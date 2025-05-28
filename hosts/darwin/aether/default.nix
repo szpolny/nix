@@ -46,6 +46,7 @@
       "discord"
       "steam"
       "visual-studio-code"
+      "iina"
     ];
     brews = [
       "gh"
