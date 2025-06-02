@@ -59,7 +59,6 @@
   system.defaults = {
     dock.autohide = true;
     dock.persistent-apps = [
-      "${pkgs.kitty}/Applications/kitty.app"
       "Applications/Firefox.app"
       "System/Applications/Messages.app"
       "System/Applications/Mail.app"
