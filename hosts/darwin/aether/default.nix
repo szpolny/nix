@@ -16,6 +16,8 @@
     neofetch
     rustc
     rustup
+    nodejs
+    nixd
   ];
 
   nix-homebrew = {

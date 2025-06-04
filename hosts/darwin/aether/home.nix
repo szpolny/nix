@@ -1,8 +1,6 @@
 {
-  inputs,
   pkgs,
   user,
-  mac-app-util,
   ...
 }: let
   homeDirectory = "/Users/${user}";
