@@ -9,7 +9,6 @@ let
   ];
 
   imports = builtins.map (module: baseModulesPath + "/${module}") modules;
-in
-{
+in {
   inherit imports;
 }

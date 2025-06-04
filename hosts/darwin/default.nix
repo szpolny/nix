@@ -3,8 +3,7 @@
   platform,
   user,
   ...
-}:
-{
+}: {
   nixpkgs.hostPlatform = "${platform}";
 
   system.primaryUser = user;

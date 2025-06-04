@@ -22,11 +22,11 @@
     zplug = {
       enable = true;
       plugins = [
-        { name = "zsh-users/zsh-syntax-highlighting"; }
-        { name = "zsh-users/zsh-completions"; }
-        { name = "zsh-users/zsh-autosuggestions"; }
-        { name = "zsh-users/zsh-history-substring-search"; }
-        { name = "Aloxaf/fzf-tab"; }
+        {name = "zsh-users/zsh-syntax-highlighting";}
+        {name = "zsh-users/zsh-completions";}
+        {name = "zsh-users/zsh-autosuggestions";}
+        {name = "zsh-users/zsh-history-substring-search";}
+        {name = "Aloxaf/fzf-tab";}
       ];
     };
 

@@ -4,7 +4,7 @@ return {
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
     dependencies = {
-      'mason-org/mason.nvim',
+      { 'mason-org/mason.nvim' },
     },
     keys = {
       {
@@ -24,6 +24,7 @@ return {
       },
       formatters_by_ft = {
         lua = { 'stylua' },
+        nix = { 'alejandra' },
       },
     },
   },

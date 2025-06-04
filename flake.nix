@@ -11,40 +11,37 @@
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
   };
 
-  outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      nix-darwin,
-      home-manager,
-      mac-app-util,
-      nix-homebrew,
-    }:
-    let
-      user = "szymon";
-      platform = "aarch64-darwin";
-    in
-    {
-      darwinConfigurations."aether" = nix-darwin.lib.darwinSystem {
-        specialArgs = {
-          inherit inputs user platform;
-        };
-        modules = [
-          {
-            nix.settings.experimental-features = "nix-command flakes";
-            system.configurationRevision = self.rev or self.dirtyRev or null;
-          }
-          mac-app-util.darwinModules.default
-          nix-homebrew.darwinModules.nix-homebrew
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.sharedModules = [
-              mac-app-util.homeManagerModules.default
-            ];
-          }
-          ./hosts/darwin
-          ./hosts/darwin/aether
-        ];
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    nix-darwin,
+    home-manager,
+    mac-app-util,
+    nix-homebrew,
+  }: let
+    user = "szymon";
+    platform = "aarch64-darwin";
+  in {
+    darwinConfigurations."aether" = nix-darwin.lib.darwinSystem {
+      specialArgs = {
+        inherit inputs user platform;
       };
+      modules = [
+        {
+          nix.settings.experimental-features = "nix-command flakes";
+          system.configurationRevision = self.rev or self.dirtyRev or null;
+        }
+        mac-app-util.darwinModules.default
+        nix-homebrew.darwinModules.nix-homebrew
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.sharedModules = [
+            mac-app-util.homeManagerModules.default
+          ];
+        }
+        ./hosts/darwin
+        ./hosts/darwin/aether
+      ];
     };
+  };
 }

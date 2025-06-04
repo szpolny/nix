@@ -4,11 +4,9 @@
   user,
   mac-app-util,
   ...
-}:
-let
+}: let
   homeDirectory = "/Users/${user}";
-in
-{
+in {
   home.username = user;
   home.homeDirectory = homeDirectory;
   home.stateVersion = "24.11";
@@ -46,5 +44,4 @@ in
     enable = true;
     enableZshIntegration = true;
   };
-
 }

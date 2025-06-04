@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   xdg.configFile = {
     "nvim/init.lua" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix/dotfiles/nvim/init.lua";

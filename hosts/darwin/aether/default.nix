@@ -3,8 +3,7 @@
   pkgs,
   user,
   ...
-}:
-{
+}: {
   users.users."${user}" = {
     name = "${user}";
     home = "/Users/${user}";
@@ -32,7 +31,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     users.${user} = import ./home.nix;
-    extraSpecialArgs = { inherit inputs pkgs user; };
+    extraSpecialArgs = {inherit inputs pkgs user;};
     backupFileExtension = "bk";
   };
 
