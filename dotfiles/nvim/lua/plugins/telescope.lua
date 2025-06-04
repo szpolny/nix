@@ -12,7 +12,7 @@ return {
         end,
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
-      {    "nvim-telescope/telescope-file-browser.nvim" },
+      { 'nvim-telescope/telescope-file-browser.nvim' },
       { 'nvim-tree/nvim-web-devicons', enabled = true },
     },
     config = function()
@@ -39,7 +39,9 @@ return {
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-      vim.keymap.set('n', '<leader>sb', function() require('telescope').extensions.file_browser.file_browser() end, { desc = '[S]earch through File [B]rowser' })
+      vim.keymap.set('n', '<leader>sb', function()
+        require('telescope').extensions.file_browser.file_browser()
+      end, { desc = '[S]earch through File [B]rowser' })
       vim.keymap.set('n', '<leader>/', function()
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
           winblend = 10,
@@ -55,7 +57,7 @@ return {
       end, { desc = '[S]earch [/] in Open Files' })
 
       vim.keymap.set('n', '<leader>sn', function()
-        builtin.find_files { cwd = os.getenv 'HOME' .. '/dotfiles/configs/nvim' }
+        builtin.find_files { cwd = os.getenv 'HOME' .. '/nix/dotfiles/nvim' }
       end, { desc = '[S]earch [N]eovim files' })
     end,
   },
