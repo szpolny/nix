@@ -4,6 +4,9 @@
     userName = "Szymon";
     userEmail = "szymonpolny@outlook.com";
     extraConfig = {
+      core = {
+        editor = "nvim";
+      };
       gpg = {
         format = "ssh";
       };
