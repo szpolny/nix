@@ -18,6 +18,12 @@
     rustup
     nodejs
     nixd
+    ripgrep
+    lynx
+    luarocks
+    wget
+    tree-sitter
+    fd
   ];
 
   nix-homebrew = {
