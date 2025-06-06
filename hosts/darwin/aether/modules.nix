@@ -6,6 +6,7 @@ let
     "git.nix"
     "kitty.nix"
     "neovim"
+    "zellij.nix"
   ];
 
   imports = builtins.map (module: baseModulesPath + "/${module}") modules;
