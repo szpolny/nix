@@ -9,6 +9,9 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+    # Zellij plugins
+    zjstatus.url = "github:dj95/zjstatus";
   };
 
   outputs = inputs @ {
@@ -18,6 +21,7 @@
     home-manager,
     mac-app-util,
     nix-homebrew,
+    zjstatus,
   }: let
     user = "szymon";
     platform = "aarch64-darwin";

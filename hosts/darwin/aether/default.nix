@@ -9,6 +9,15 @@
     home = "/Users/${user}";
   };
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      zjstatus = inputs.zjstatus.packages.${prev.system}.default;
+    })
+    (final: prev: {
+      zellij-autolock = final.callPackage ./../../../pkgs/zellij-autolock.nix {};
+    })
+  ];
+
   environment.systemPackages = with pkgs; [
     neovim
     tmux
@@ -26,6 +35,7 @@
     fd
     tree
     zellij
+    zellij-autolock
   ];
 
   nix-homebrew = {
