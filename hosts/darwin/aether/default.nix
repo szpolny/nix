@@ -24,6 +24,8 @@
     wget
     tree-sitter
     fd
+    tree
+    zellij
   ];
 
   nix-homebrew = {
