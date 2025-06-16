@@ -81,7 +81,7 @@
   system.defaults = {
     dock.autohide = true;
     dock.persistent-apps = [
-      "Applications/Firefox.app"
+      "Applications/Safari.app"
       "System/Applications/Messages.app"
       "System/Applications/Mail.app"
       "System/Applications/Calendar.app"
