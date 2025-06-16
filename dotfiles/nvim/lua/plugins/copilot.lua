@@ -1,19 +1,20 @@
 return {
   {
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    event = 'InsertEnter',
-    opts = {
-      suggestion = {
-        enable = true,
-        auto_trigger = true,
-        keymap = {
-          accept = '<M-l>',
-          accept_word = '<M-w>',
-          accept_line = false,
-          next = '<M-]>',
-          prev = '<M-[>',
-          dismiss = '<C-]>',
+    {
+      'zbirenbaum/copilot.lua',
+      cmd = 'Copilot',
+      opts = {
+        suggestion = {
+          enable = true,
+          auto_trigger = true,
+          keymap = {
+            accept = '<M-l>',
+            accept_word = '<M-w>',
+            accept_line = false,
+            next = '<M-]>',
+            prev = '<M-[>',
+            dismiss = '<C-]>',
+          },
         },
       },
     },
