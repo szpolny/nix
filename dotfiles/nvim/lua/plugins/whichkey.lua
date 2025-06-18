@@ -15,10 +15,13 @@ return {
           { '<leader>f', group = 'Find' },
           { '<leader>g', group = 'Git' },
           { '<leader>R', group = 'Replace' },
+          { '<leader>l', group = 'LSP' },
           { '<leader>c', group = 'LSP (Trouble)' },
           { '<leader>s', group = 'Search' },
           { '<leader>x', group = 'diagnostics/quickfix (Trouble)' },
           { '<leader>u', group = 'Toggle Features' },
+          { '<leader>W', group = 'Workspace' },
+
           { '[', group = 'prev' },
           { ']', group = 'next' },
           { 'g', group = 'goto' },

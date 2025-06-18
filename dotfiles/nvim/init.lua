@@ -1,4 +1,4 @@
-require 'plugin-manager'
-require 'options'
+require 'configs.options'
 require 'keymaps'
-require 'autocmds'
+require 'configs.autocmds'
+require 'core.lazy'
