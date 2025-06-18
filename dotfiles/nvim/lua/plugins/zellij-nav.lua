@@ -4,10 +4,34 @@ return {
     lazy = true,
     event = 'VeryLazy',
     keys = {
-      { '<c-h>', '<cmd>ZellijNavigateLeftTab<cr>', { silent = true, desc = 'navigate left or tab' } },
-      { '<c-j>', '<cmd>ZellijNavigateDown<cr>', { silent = true, desc = 'navigate down' } },
-      { '<c-k>', '<cmd>ZellijNavigateUp<cr>', { silent = true, desc = 'navigate up' } },
-      { '<c-l>', '<cmd>ZellijNavigateRightTab<cr>', { silent = true, desc = 'navigate right or tab' } },
+      {
+        '<c-h>',
+        function()
+          require('zellij-nav').left()
+        end,
+        { silent = true, desc = 'navigate left' },
+      },
+      {
+        '<c-j>',
+        function()
+          require('zellij-nav').down()
+        end,
+        { silent = true, desc = 'navigate down' },
+      },
+      {
+        '<c-k>',
+        function()
+          require('zellij-nav').up()
+        end,
+        { silent = true, desc = 'navigate up' },
+      },
+      {
+        '<c-l>',
+        function()
+          require('zellij-nav').right()
+        end,
+        { silent = true, desc = 'navigate right' },
+      },
     },
     opts = {},
     config = function()
