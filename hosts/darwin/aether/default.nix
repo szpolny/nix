@@ -71,6 +71,7 @@
       "gh"
       "weechat"
       "deno"
+      "pnpm"
     ];
     onActivation.cleanup = "zap";
     masApps = {
@@ -98,5 +99,19 @@
     NSGlobalDomain.KeyRepeat = 2;
     magicmouse.MouseButtonMode = "TwoButton";
     screencapture.location = "~/Pictures/screenshots";
+    CustomUserPreferences = {
+      "com.apple.symbolichotkeys" = {
+        AppleSymbolicHotKeys = {
+          "60" = {
+            enabled = false;
+          };
+        };
+      };
+    };
   };
+
+  system.activationScripts.postActivation.text = ''
+    # Following line should allow us to avoid a logout/login cycle when changing settings
+    sudo -u szymon /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+  '';
 }
