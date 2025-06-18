@@ -70,6 +70,7 @@
     brews = [
       "gh"
       "weechat"
+      "deno"
     ];
     onActivation.cleanup = "zap";
     masApps = {
