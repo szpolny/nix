@@ -5,7 +5,7 @@ return {
     lazy = false,
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { lua, nix },
+      ensure_installed = { lua, nix, rust },
 
       auto_install = true,
     },
