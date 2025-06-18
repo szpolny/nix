@@ -8,9 +8,7 @@ return {
           enable = true,
           auto_trigger = true,
           keymap = {
-            accept = '<M-l>',
-            accept_word = '<M-w>',
-            accept_line = false,
+            accept = '<C-a>',
             next = '<M-]>',
             prev = '<M-[>',
             dismiss = '<C-]>',
@@ -40,7 +38,7 @@ return {
           end,
         })
 
-        vim.keymap.set('n', '<leader>cc', function()
+        vim.keymap.set('n', '<leader>ic', function()
           chat.open()
         end, { desc = 'Open Copilot Chat' })
       end,
