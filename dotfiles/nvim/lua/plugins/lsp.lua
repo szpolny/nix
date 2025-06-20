@@ -4,11 +4,13 @@ return {
     dependencies = {
       { 'mason-org/mason.nvim' },
       'mason-org/mason-lspconfig.nvim',
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
       'j-hui/fidget.nvim',
       'saghen/blink.cmp',
     },
     config = function()
       vim.diagnostic.config {
+        update_in_insert = true,
         severity_sort = true,
         float = { border = 'rounded', source = 'if_many' },
         underline = { severity = vim.diagnostic.severity.ERROR },
@@ -38,12 +40,14 @@ return {
       local capabilities = require('blink.cmp').get_lsp_capabilities()
 
       require('mason').setup()
+
       require('mason-lspconfig').setup {
         automatic_enable = true,
         ensure_installed = {
           'lua_ls',
-          'rust_analyzer',
           'lemminx',
+          'eslint',
+          'ts_ls',
         },
         handler = function(server_name)
           require('lspconfig')[server_name].setup {
@@ -51,6 +55,35 @@ return {
           }
         end,
       }
+
+      require('mason-tool-installer').setup {
+        ensure_installed = {
+          'rust_analyzer',
+          'bacon',
+          'bacon-ls',
+        },
+      }
+
+      require('lspconfig').rust_analyzer.setup {
+        capabilities = capabilities,
+        settings = {
+          ['rust-analyzer'] = {
+            checkOnSave = {
+              enable = false,
+            },
+            diagnostics = {
+              enable = false,
+            },
+          },
+        },
+      }
+
+      require('lspconfig').bacon_ls.setup {
+        capabilities = capabilities,
+        autostart = true,
+      }
+
+      vim.lsp.inlay_hint.enable()
     end,
   },
   {

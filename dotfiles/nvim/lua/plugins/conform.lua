@@ -26,6 +26,7 @@ return {
         lua = { 'stylua' },
         nix = { 'alejandra' },
         rust = { 'rustfmt' },
+        typescript = { 'prettierd' },
       },
     },
   },
