@@ -66,6 +66,8 @@
       "steam"
       "visual-studio-code"
       "iina"
+      "blockblock"
+      "knockknock"
     ];
     brews = [
       "gh"
