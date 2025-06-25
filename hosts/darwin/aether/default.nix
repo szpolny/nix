@@ -66,8 +66,8 @@
       "steam"
       "visual-studio-code"
       "iina"
-      "blockblock"
-      "knockknock"
+      "pearcleaner"
+      "lihaoyun6/tap/airbattery"
     ];
     brews = [
       "gh"
