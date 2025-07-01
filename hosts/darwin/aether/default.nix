@@ -68,17 +68,21 @@
       "iina"
       "pearcleaner"
       "lihaoyun6/tap/airbattery"
+      "google-chrome"
     ];
     brews = [
       "gh"
       "weechat"
       "deno"
       "pnpm"
+      "yarn"
+      "bat"
     ];
     onActivation.cleanup = "zap";
     masApps = {
       "1Password for Safari" = 1569813296;
       "AdGuard for Safari" = 1440147259;
+      "Xcode" = 497799835;
     };
   };
 
@@ -95,7 +99,6 @@
     dock.show-recents = false;
     loginwindow.GuestEnabled = false;
     NSGlobalDomain.AppleICUForce24HourTime = true;
-    NSGlobalDomain.AppleInterfaceStyle = "Dark";
     NSGlobalDomain.AppleShowAllExtensions = true;
     NSGlobalDomain.InitialKeyRepeat = 25;
     NSGlobalDomain.KeyRepeat = 2;
