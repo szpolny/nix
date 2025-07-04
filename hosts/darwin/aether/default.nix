@@ -67,8 +67,9 @@
       "visual-studio-code"
       "iina"
       "pearcleaner"
-      "lihaoyun6/tap/airbattery"
       "google-chrome"
+      "dotnet-sdk"
+      "godot-mono"
     ];
     brews = [
       "gh"
@@ -83,6 +84,7 @@
       "1Password for Safari" = 1569813296;
       "AdGuard for Safari" = 1440147259;
       "Xcode" = 497799835;
+      "Userscripts" = 1463298887;
     };
   };
 
