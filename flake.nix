@@ -3,10 +3,15 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+
+    deploy-rs.url = "github:serokell/deploy-rs";
+
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
     mac-app-util.url = "github:hraban/mac-app-util";
     nix-homebrew.url = "github:zhaofengli/nix-homebrew";
 
@@ -17,6 +22,7 @@
   outputs = inputs @ {
     self,
     nixpkgs,
+    deploy-rs,
     nix-darwin,
     home-manager,
     mac-app-util,
@@ -26,6 +32,29 @@
     user = "szymon";
     platform = "aarch64-darwin";
   in {
+    nixosConfigurations."asgard" = nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit inputs user;
+      };
+      system = "x86_64-linux";
+      modules = [
+        ./hosts/nixos/asgard
+      ];
+    };
+
+    deploy.nodes."asgard" = {
+      hostname = "asgard";
+      profiles.system = {
+        user = "root";
+        sshUser = "szymon";
+        remoteBuild = true;
+        interactiveSudo = true;
+        path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.asgard;
+      };
+    };
+
+    checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+
     darwinConfigurations."aether" = nix-darwin.lib.darwinSystem {
       specialArgs = {
         inherit inputs user platform;

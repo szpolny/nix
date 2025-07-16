@@ -36,6 +36,7 @@
     tree
     zellij
     zellij-autolock
+    deploy-rs
   ];
 
   nix-homebrew = {
