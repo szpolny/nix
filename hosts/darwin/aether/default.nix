@@ -70,6 +70,7 @@
       "google-chrome"
       "dotnet-sdk"
       "godot-mono"
+      "mullvad-vpn"
     ];
     brews = [
       "gh"
