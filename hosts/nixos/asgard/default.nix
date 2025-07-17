@@ -21,9 +21,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices."luks-b1a3bb26-bcd6-4a7b-8f02-077c12e90df9".device = "/dev/disk/by-uuid/b1a3bb26-bcd6-4a7b-8f02-077c12e90df9";
-
   networking.hostName = "asgard";
+  networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Warsaw";
 
