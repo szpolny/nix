@@ -6,6 +6,8 @@
 
     deploy-rs.url = "github:serokell/deploy-rs";
 
+    opnix.url = "github:brizzbuzz/opnix";
+
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -23,6 +25,7 @@
     self,
     nixpkgs,
     deploy-rs,
+    opnix,
     nix-darwin,
     home-manager,
     mac-app-util,
@@ -38,6 +41,7 @@
       };
       system = "x86_64-linux";
       modules = [
+        opnix.nixosModules.default
         ./hosts/nixos/asgard
       ];
     };
@@ -48,7 +52,6 @@
         user = "root";
         sshUser = "szymon";
         remoteBuild = true;
-        interactiveSudo = true;
         path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.asgard;
       };
     };

@@ -1,20 +1,48 @@
 {
   pkgs,
   user,
+  config,
+  inputs,
   ...
 }: {
   imports = [
     ./hardware.nix
+    ./services
   ];
+
   users.users."${user}" = {
     name = "${user}";
-    extraGroups = ["wheel" "networkmanager"];
+    extraGroups = ["wheel" "networkmanager" "docker"];
     isNormalUser = true;
   };
 
   environment.systemPackages = with pkgs; [
     vim
+    inputs.opnix.packages.${system}.default
   ];
+
+  services.onepassword-secrets = {
+    enable = true;
+    tokenFile = "/etc/opnix-token";
+
+    secrets = {
+      mullvad = {
+        reference = "op://Homelab/Wireguard - Mullvad/password";
+        owner = "szymon";
+      };
+    };
+  };
+
+  nixpkgs.config.allowUnfree = true;
+
+  virtualisation.docker.enable = true;
+  virtualisation.docker.daemon.settings.features.cdi = true;
+
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  hardware.nvidia.open = false;
+  services.xserver.videoDrivers = ["nvidia"];
+
+  hardware.nvidia-container-toolkit.enable = true;
 
   security.sudo.wheelNeedsPassword = false;
 
@@ -39,8 +67,6 @@
     LC_TELEPHONE = "pl_PL.UTF-8";
     LC_TIME = "pl_PL.UTF-8";
   };
-
-  nixpkgs.config.allowUnfree = true;
 
   services.openssh.enable = true;
 
