@@ -2,7 +2,6 @@
   pkgs,
   user,
   config,
-  inputs,
   ...
 }: {
   imports = [
@@ -18,20 +17,7 @@
 
   environment.systemPackages = with pkgs; [
     vim
-    inputs.opnix.packages.${system}.default
   ];
-
-  services.onepassword-secrets = {
-    enable = true;
-    tokenFile = "/etc/opnix-token";
-
-    secrets = {
-      mullvad = {
-        reference = "op://Homelab/Wireguard - Mullvad/password";
-        owner = "szymon";
-      };
-    };
-  };
 
   nixpkgs.config.allowUnfree = true;
 

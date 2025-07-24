@@ -1,6 +1,4 @@
-{config, ...}: let
-  secretPath = config.services.onepassword-secrets.secretPaths.mullvad;
-in {
+{...}: {
   virtualisation.oci-containers = {
     backend = "docker";
     containers = {
@@ -8,10 +6,15 @@ in {
         image = "qmcgaw/gluetun:latest";
         environment = {
           VPN_SERVICE_PROVIDER = "mullvad";
-          VPN_TYPE = "wireguard";
-          WIREGUARD_ADDRESSES = "10.72.111.58/32";
+          VPN_TYPE = "openvpn";
+          TZ = "Europe/Warsaw";
         };
-        extraOptions = ["-e WIREGUARD_PRIVATE_KEY=\"$(cat ${secretPath})\""];
+        environmentFiles = [
+          "/etc/gluetun/env"
+        ];
+        capabilities = {
+          NET_ADMIN = true;
+        };
         volumes = [
           "/etc/gluetun:/gluetun"
         ];
@@ -21,8 +24,16 @@ in {
           "29206:29206/udp" # qBittorrent Torrenting Port
         ];
         autoStart = true;
+        labels = {
+          "traefik.enable" = "true";
+          "traefik.http.routers.gluetun.entrypoints" = "web";
+          "traefik.http.routers.gluetun.rule" = "Host(`qbittorrent.asgard`)";
+          "traefik.http.routers.gluetun.service" = "gluetun";
+          "traefik.http.services.gluetun.loadbalancer.server.port" = "8080";
+        };
       };
       qbittorrent = {
+        dependsOn = ["gluetun"];
         image = "lscr.io/linuxserver/qbittorrent:latest";
         environment = {
           PUID = "1000";

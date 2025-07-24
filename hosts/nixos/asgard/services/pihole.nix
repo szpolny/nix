@@ -23,6 +23,7 @@
           SYS_NICE = true;
         };
         labels = {
+          "traefik.enable" = "true";
           "traefik.http.routers.pihole.rule" = "Host(`pi.hole`)";
           "traefik.http.services.pihole.loadbalancer.server.port" = "80";
         };
