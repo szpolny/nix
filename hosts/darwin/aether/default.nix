@@ -58,6 +58,7 @@
 
   homebrew = {
     enable = true;
+    onActivation.upgrade = true;
     casks = [
       "1password"
       "1password-cli"
