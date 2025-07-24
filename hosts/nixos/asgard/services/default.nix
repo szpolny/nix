@@ -5,5 +5,6 @@
     ./proxy.nix
     ./torrenting.nix
     ./homepage.nix
+    ./cloudflare.nix
   ];
 }

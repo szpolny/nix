@@ -75,6 +75,7 @@
       "mullvad-vpn"
     ];
     brews = [
+      "cloudflared"
       "gh"
       "weechat"
       "deno"
