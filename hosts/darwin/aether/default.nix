@@ -93,13 +93,6 @@
   # System settings
   system.defaults = {
     dock.autohide = true;
-    dock.persistent-apps = [
-      "Applications/Safari.app"
-      "System/Applications/Messages.app"
-      "System/Applications/Mail.app"
-      "System/Applications/Calendar.app"
-      "System/Applications/Music.app"
-    ];
     dock.show-recents = false;
     loginwindow.GuestEnabled = false;
     NSGlobalDomain.AppleICUForce24HourTime = true;
