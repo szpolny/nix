@@ -1,11 +1,13 @@
 {...}: {
   virtualisation.oci-containers = {
-    backend = "docker";
     containers = {
       homarr = {
         image = "ghcr.io/homarr-labs/homarr:latest";
         environmentFiles = [
           "/etc/homarr/env"
+        ];
+        networks = [
+          "proxy"
         ];
         ports = [
           "7575:7575"

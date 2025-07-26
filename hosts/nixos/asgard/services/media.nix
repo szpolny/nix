@@ -1,6 +1,5 @@
 {...}: {
   virtualisation.oci-containers = {
-    backend = "docker";
     containers = {
       jellyfin = {
         image = "lscr.io/linuxserver/jellyfin:latest";
@@ -9,6 +8,9 @@
           "8920:8920/tcp"
           "7359:7359/udp"
           "1900:1900/udp"
+        ];
+        networks = [
+          "proxy"
         ];
         environment = {
           PUID = "1000";
@@ -35,6 +37,9 @@
         ports = [
           "7878:7878/tcp"
         ];
+        networks = [
+          "proxy"
+        ];
         environment = {
           PUID = "1000";
           PGID = "1000";
@@ -55,6 +60,9 @@
         image = "lscr.io/linuxserver/sonarr:latest";
         ports = [
           "8989:8989/tcp"
+        ];
+        networks = [
+          "proxy"
         ];
         environment = {
           PUID = "1000";
@@ -77,6 +85,9 @@
         ports = [
           "9696:9696/tcp"
         ];
+        networks = [
+          "proxy"
+        ];
         environment = {
           PUID = "1000";
           PGID = "1000";
@@ -95,6 +106,9 @@
         image = "lscr.io/linuxserver/bazarr:latest";
         ports = [
           "6767:6767"
+        ];
+        networks = [
+          "proxy"
         ];
         environment = {
           PUID = "1000";

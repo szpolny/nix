@@ -1,6 +1,5 @@
 {...}: {
   virtualisation.oci-containers = {
-    backend = "docker";
     containers = {
       pihole = {
         image = "pihole/pihole:latest";
@@ -9,6 +8,9 @@
           "53:53/udp"
           "83:80/tcp"
           "443:443/tcp"
+        ];
+        networks = [
+          "proxy"
         ];
         environment = {
           TZ = "Europe/Warsaw";

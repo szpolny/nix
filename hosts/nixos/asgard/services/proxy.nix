@@ -1,6 +1,5 @@
 {...}: {
   virtualisation.oci-containers = {
-    backend = "docker";
     containers = {
       traefik = {
         image = "traefik";
@@ -8,10 +7,14 @@
           "8080:8080"
           "80:80"
         ];
+        networks = [
+          "proxy"
+        ];
         cmd = [
           "--api.insecure=true"
           "--providers.docker=true"
           "--providers.docker.exposedbydefault=false"
+          "--providers.docker.network=proxy"
           "--entrypoints.web.address=:80"
         ];
         volumes = [

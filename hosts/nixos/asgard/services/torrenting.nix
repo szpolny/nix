@@ -1,6 +1,5 @@
 {...}: {
   virtualisation.oci-containers = {
-    backend = "docker";
     containers = {
       gluetun = {
         image = "qmcgaw/gluetun:latest";
@@ -15,6 +14,9 @@
         capabilities = {
           NET_ADMIN = true;
         };
+        networks = [
+          "proxy"
+        ];
         volumes = [
           "/etc/gluetun:/gluetun"
         ];
@@ -28,8 +30,8 @@
           "traefik.enable" = "true";
           "traefik.http.routers.gluetun.entrypoints" = "web";
           "traefik.http.routers.gluetun.rule" = "Host(`qbittorrent.asgard`)";
-          "traefik.http.routers.gluetun.service" = "gluetun";
-          "traefik.http.services.gluetun.loadbalancer.server.port" = "8080";
+          "traefik.http.routers.gluetun.service" = "qbittorrent";
+          "traefik.http.services.qbittorrent.loadbalancer.server.port" = "8080";
         };
       };
       qbittorrent = {
