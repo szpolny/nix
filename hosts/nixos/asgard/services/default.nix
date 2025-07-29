@@ -21,5 +21,6 @@
     ./torrenting.nix
     ./homepage.nix
     ./cloudflare.nix
+    ./vpn.nix
   ];
 }

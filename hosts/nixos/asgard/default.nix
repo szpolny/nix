@@ -2,6 +2,7 @@
   pkgs,
   user,
   config,
+  inputs,
   ...
 }: {
   imports = [
@@ -17,7 +18,21 @@
 
   environment.systemPackages = with pkgs; [
     vim
+    tailscale
+    jq
+    inputs.opnix.packages.${system}.default
   ];
+
+  services.onepassword-secrets = {
+    enable = true;
+    tokenFile = "/etc/opnix-token";
+    secrets = {
+      tailscalePassword = {
+        reference = "op://Homelab/TailscaleToken/password";
+        services = ["tailscale"];
+      };
+    };
+  };
 
   nixpkgs.config.allowUnfree = true;
 

@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
+    opnix.url = "github:brizzbuzz/opnix";
+
     deploy-rs.url = "github:serokell/deploy-rs";
 
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
@@ -22,6 +24,7 @@
   outputs = inputs @ {
     self,
     nixpkgs,
+    opnix,
     deploy-rs,
     nix-darwin,
     home-manager,
@@ -38,6 +41,7 @@
       };
       system = "x86_64-linux";
       modules = [
+        opnix.nixosModules.default
         ./hosts/nixos/asgard
       ];
     };
