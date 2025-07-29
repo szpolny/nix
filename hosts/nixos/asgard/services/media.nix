@@ -1,6 +1,28 @@
 {...}: {
   virtualisation.oci-containers = {
     containers = {
+      jellyseerr = {
+        image = "fallenbagel/jellyseerr";
+        ports = [
+          "5055:5055/tcp"
+        ];
+        networks = [
+          "proxy"
+        ];
+        environment = {
+          PUID = "1000";
+          PGID = "1000";
+          TZ = "Europe/Warsaw";
+        };
+        volumes = [
+          "/etc/jellyseerr:/app/config"
+        ];
+        labels = {
+          "traefik.enable" = "true";
+          "traefik.http.routers.jellyseerr.rule" = "Host(`jellyseerr.asgard`)";
+        };
+        autoStart = true;
+      };
       jellyfin = {
         image = "lscr.io/linuxserver/jellyfin:latest";
         ports = [
